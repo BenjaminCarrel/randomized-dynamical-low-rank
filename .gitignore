@@ -163,3 +163,12 @@ cython_debug/
 
 # Mac OS
 .DS_Store
+
+# PDF and related
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
