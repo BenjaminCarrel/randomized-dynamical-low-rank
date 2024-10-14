@@ -38,12 +38,13 @@ cd randomized-dynamical-low-rank
 ### General
 
 Before running the experiments, you will need to install the following libraries:
-- pip
-- numpy
-- scipy
-- matplotlib
-- jupyter
-- tqdm
+- python (3.12)
+- pip (24.2)
+- numpy (2.1.2)
+- scipy (1.14.1)
+- matplotlib (3.9.2)
+- jupyter (1.1.1)
+- tqdm (4.66.5)
 And add the folders `low_rank_toolbox` and `matrix_ode_toolbox` as source.
 
 ### Conda installation
@@ -59,29 +60,3 @@ Then, activate the environment with
 Finally, compile and install the package with
 
 `pip install --compile .`
-
-### Conda installation with Apple Silicon
-
-Make sure you are using the version of conda that is native for ARM chips.
-If unsure, you can install the native version with homebrew by running the command
-`brew install miniconda`
-
-Then, create the conda environment with
-
-'''
-conda create -n randomized-dlra
-conda activate randomized-dlra
-'''
-
-Then, install numpy and scipy with Apple's Accelerate BLAS
-
-'''
-conda install numpy scipy "libblas=*=*accelerate"
-'''
-
-Finally, install other packages and install the compiled version of the package
-
-'''
-conda install jupyter tqdm matplotlib pip
-pip install --compile .
-'''
