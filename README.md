@@ -2,13 +2,11 @@
 
 ## Abstract
 
-We introduce new dynamical low-rank (DLR) methods for solving large-scale matrix differential equations motivated by algorithms from randomised numerical linear algebra.
-The new methods consist essentially of two steps: a range estimation step followed by a post-processing step.
-The range estimation is done by a newly developed dynamical rangefinder method.
-Then, we propose two ways to perform the post-processing leading to two time-stepping methods that we respectively call dynamical randomised singular value decomposition (DRSVD) and dynamical generalised Nyström (DGN).
-The new methods have natural extensions to the rank-adaptive framework.
-The cost of the new techniques is comparable to existing DLR techniques, and their numerical performance make them very competitive; the experiments show that the new methods are very accurate and have little variance despite their inherent randomness. Our results suggest that the new methods are robust to stiffness, and critical physical quantities such as the energy and geometry of the solution are numerically preserved. 
-Interestingly, the new methods do not show any step-size restriction and can be used as one-step solvers.
+This paper introduces new dynamical low-rank (DLR) methods for solving large-scale matrix differential equations, motivated by algorithms from randomised numerical linear algebra.
+
+The new methods consist essentially of two steps: a range estimation step followed by a post-processing step. The range estimation is done by a newly developed dynamical rangefinder method. Then, we propose two ways to perform the post-processing leading to two time-stepping methods that we respectively call dynamical randomised singular value decomposition (DRSVD) and dynamical generalised Nyström (DGN). The new methods have natural extensions to the rank-adaptive framework.
+
+The cost of the new methods is comparable to existing DLR techniques, and their numerical performance make them very competitive; the experiments show that the new methods are very accurate and have little variance despite their inherent randomness. Our results suggest moreover that the new methods are robust to stiffness, and critical physical quantities such as the energy and geometry of the solution are numerically preserved. Interestingly, the new methods do not show any step-size restriction and can be used as one-step solvers. 
 
 ## Author
 
@@ -16,13 +14,7 @@ Interestingly, the new methods do not show any step-size restriction and can be 
 
 ## Reference
 
-[Randomized methods for the dynamical low-rank approximation]()
-
-Please use the following template for citing:
-'''
-TO BE UPDATED
-'''
-
+Link to arXiv: https://arxiv.org/abs/2410.17091
 
 
 ## Installation instructions
