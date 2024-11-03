@@ -22,7 +22,7 @@ if do_save:
 #%% Generate the problem
 name = 'Two-stream instability'
 filename = 'two_stream_instability'
-nx, nv = 128, 128 # original paper: 128, 128
+nx, nv = 128, 128 # original paper: 128, 128 and 256, 256 for the graphical abstract
 ode, X0 = make_two_stream(nx, nv, dx_order=4, dv_order=4)
 t0, tf = 0, 60
 nt = tf*10
@@ -40,7 +40,7 @@ print('Done.')
 #%% Low-rank solvers
 
 ## Parameters and low-rank initial value
-rank = 20
+rank = 20 # original paper: 20, and 30 for the graphical abstract
 Y0 = SVD.truncated_svd(X0, rank)
 dt = 0.1
 if dt > 0.1:
@@ -213,5 +213,34 @@ fig.legend(loc='upper left', bbox_to_anchor=(0.289, 0.73), fontsize=18)
 fig.tight_layout()
 if do_save:
     fig.savefig(f'{path}{filename}_errors.pdf', bbox_inches='tight')
+
+# %% Plot for the graphical abstract - subplots at final time with KSL, DRSVD and DGN and reference
+if nx == 256 and nv == 256 and rank==30:
+    fig, axs = plt.subplots(2, 2, figsize=(15, 20))
+    axs[0, 0].imshow(ref_two_stream.Xs[-1].T, vmin=min_value, vmax=max_value)
+    axs[0, 0].set_title(r'Reference (full rank)', fontsize=20)
+    axs[0, 1].imshow(dlra_two_stream[0].Xs[-1].todense().T, vmin=min_value, vmax=max_value)
+    axs[0, 1].set_title(r'Projector-splitting integrator (rank $30$)', fontsize=20)
+    axs[1, 0].imshow(dlra_two_stream[1].Xs[-1].todense().T, vmin=min_value, vmax=max_value)
+    axs[1, 0].set_title(r'Dynamical randomized SVD (rank $30$)', fontsize=20)
+    axs[1, 1].imshow(dlra_two_stream[2].Xs[-1].todense().T, vmin=min_value, vmax=max_value)
+    axs[1, 1].set_title(r'Dynamical generalized Nyström (rank $30$)', fontsize=20)
+
+    # Remove ticks
+    for i in range(2):
+        for j in range(2):
+            axs[i, j].set_xticks([])
+            axs[i, j].set_yticks([])
+
+    # Adjust layout to move titles below the figure
+    # fig.tight_layout(rect=[0, 0.03, 1, 0.95])
+    fig.tight_layout()
+    # fig.subplots_adjust(top=0.85)
+
+    # Save the figure
+    if do_save:
+        fig.savefig(f'{path}{filename}_graphical_abstract.pdf', bbox_inches='tight')
+
+
 
 # %%
